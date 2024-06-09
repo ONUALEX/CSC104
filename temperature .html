@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Calculator</title>
+  <style>
+    .calculator {
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .calculator input, .calculator button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Temperature Calculator</h1>
+  <div class="calculator">
+    <input type="number" id="temperature" placeholder="Enter temperature" required>
+    <select id="unit">
+      <option value="celsius">Celsius</option>
+      <option value="fahrenheit">Fahrenheit</option>
+      <option value="kelvin">Kelvin</option>
+    </select>
+    <button onclick="convertTemperature()">Convert</button>
+    <input type="text" id="result" placeholder="Result" readonly>
+  </div>
+
+  <script>
+    function convertTemperature() {
+      var temperature = parseFloat(document.getElementById("temperature").value);
+      var unit = document.getElementById("unit").value;
+      var result;
+
+      switch (unit) {
+        case "celsius":
+          result = temperature;
+          break;
+        case "fahrenheit":
+          result = (temperature * 9/5) + 32;
+          break;
+        case "kelvin":
+          result = temperature + 273.15;
+          break;
+        default:
+          result = "Invalid unit";
+      }
+
+      document.getElementById("result").value = result.toFixed(2) + " " + unit.toUpperCase();
+    }
+  </script>
+</body>
+</html>
